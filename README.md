@@ -6,5 +6,4 @@ This walkthrough should get students through the mechanics of adding activerecor
 should cover:
 - activerecord gem
 - creating rakefile with activerecord rake tasks
-- configuring the database in environment.rb
-- Application controller inherits from Sinatra:base
+- configuring the database in environment.rb file
