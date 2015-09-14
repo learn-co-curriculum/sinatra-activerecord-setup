@@ -3,9 +3,9 @@
 
 ## Objectives
 
-1). Understand the configuration pieces of using ActiveRecord with our Sinatra applications
-2). Create and use a Rakefile to run ActiveRecord migrations
-3). Setup a database connection
+1. Understand the configuration pieces of using ActiveRecord with our Sinatra applications
+2. Create and use a Rakefile to run ActiveRecord migrations
+3. Setup a database connection
 
 ## Overview
 
