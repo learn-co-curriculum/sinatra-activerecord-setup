@@ -102,4 +102,51 @@ But for now, `database.db` is a sensible name!
 
 Let's test out our handywork by creating a `dogs` table with two columns: `name` and `breed`. First, let's create out migration:
 
-`ra
+```bash
+rake db:create_migration NAME=create_dogs
+=># db/migrate/20150914201353_create_dogs.rb
+```
+
+Inside of our migration file, add methods for `up` and `down`
+
+```ruby
+class CreateDogs < ActiveRecord::Migration
+  def up
+  
+  end
+
+  def down
+  	
+  end
+end
+```
+
+Our `up` method should create our table with `name` and `breed` columns. Our down method should drop the table. 
+
+```ruby
+class CreateDogs < ActiveRecord::Migration
+  def up
+    create_table :dogs do |t|
+      t.string :name
+      t.string :breed
+    end
+  end
+
+  def down
+  	drop_table :dogs
+  end
+end
+```
+
+Now, run the migration from the terminal with `rake db:migrate`. 
+
+```bash
+rake db:migrate
+
+== 20150914201353 CreateDogs: migrating =======================================
+-- create_table(:dogs)
+   -> 0.0019s
+== 20150914201353 CreateDogs: migrated (0.0020s) ==============================
+```
+
+Awesome job!!
