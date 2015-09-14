@@ -3,9 +3,9 @@
 
 ## Objectives
 
-1. Understand the configuration pieces of using ActiveRecord with our Sinatra applications
+1. Setup a database in a Sinatra application. 
 2. Create and use a Rakefile to run ActiveRecord migrations
-3. Setup a database connection
+3. Use ActiveRecord in a Sinatra application.
 
 ## Overview
 
@@ -13,11 +13,11 @@ Sinatra doesn't come with database support out of the box, but it's relatively e
 
 ## Instructions
 
-Fork and clone this repository to get started! We have a basic sinatra application stubbed out with an `app.rb` file acting at the controller.
+Fork and clone this repository to get started! We have a basic sinatra application stubbed out with an `app.rb` file acting as the controller.
 
 ### Adding Your Gems
 
-First, we'll add two gems to setup ActiveRecord: `activerecord`, and `sinatra-activerecord`, `rake`. `activerecord` gives us the magical database mapping and interactions. `rake`, short for "ruby make", is a package that lets us quickly create files, folders, and automate tasks such as database creation. `sinatra-activerecord` gives us access to some awesome Rake tasks. 
+First, we'll add three gems to allow us to use ActiveRecord: `activerecord`, `sinatra-activerecord`, and `rake`. `activerecord` gives us access to the magical database mapping and association powers. `rake`, short for "ruby make", is a package that lets us quickly create files, folders, and automate tasks such as database creation, and `sinatra-activerecord` gives us access to some awesome Rake tasks. Make sure those three gems are in your Gemfile:
 
 ```ruby
  	gem 'sinatra'
@@ -47,9 +47,29 @@ Into our development group, we'll add two other gems: `sqlite3` and `tux`. `sqli
 
 Our Gemfile is up to date - awesome! Go ahead and run `bundle install` to get your system up to speed.
 
+### Conecting to the Database
+
+We now have access to all of the gems that we need, but we still need to setup a connection to our database. Add the following block of code to your `environment.rb` file. 
+
+```ruby
+configure :development do
+  set :database, "sqlite3:db/database.db"
+end
+```
+
+This sets up a connection to a sqlite3 database named "database.db", located in a folder called "db." If we wanted our `.db` file to be called `dogs.db`, we could simply change the name of this file:
+
+```ruby
+configure :development do
+  set :database, "sqlite3:db/dog.db"
+end
+```
+
+But for now, `database.db` is a great name! Notice that this didn't actually create those files or folders yet - that's what Rake will help us with!
+
 ### Making a Rakefile
 
-As we mentioned, `rake` gives us the ability to quickly make files and setup automated tasks. We define these in something called a Rakefile. First, create a file at the root of the directory called `Rakefile`. In your `Rakefile`, we'll require our `config/environment.rb` file to load up our environment, as well as `"sinatra/activerecord/rake"` to get Rake tasks from the `sinatra-activerecord` gem.
+As we mentioned, `rake` gives us the ability to quickly make files and setup automated tasks. We define these in a file called `Rakefile`. First, create a `Rakefile` in the root of our project directory. In your `Rakefile`, we'll require our `config/environment.rb` file to load up our environment, as well as `"sinatra/activerecord/rake"` to get Rake tasks from the `sinatra-activerecord` gem.
 
 ```ruby
 require'./config/environment'
@@ -78,25 +98,6 @@ rake db:version             # Retrieves the current schema version number
 ```
 Awesome!
 
-### Conecting to the Database
-
-We now have access to all of the gems that we need, but we still need to setup a connection to our database. Add the following block of code to your `environment.rb` file. 
-
-```ruby
-configure :development do
-  set :database, "sqlite3:db/database.db"
-end
-```
-
-This sets up a connection to a sqlite3 database named "database.db", located in a folder called "db." If we wanted our `.db` file to be called `dogs.db`, we could simply change the name of this file:
-
-```ruby
-configure :development do
-  set :database, "sqlite3:db/dog.db"
-end
-```
-
-But for now, `database.db` is a sensible name!
 
 ### Testing it Out
 
@@ -104,6 +105,10 @@ Let's test out our handywork by creating a `dogs` table with two columns: `name`
 
 ```bash
 rake db:create_migration NAME=create_dogs
+```
+You should see the following output:
+
+```bash
 =># db/migrate/20150914201353_create_dogs.rb
 ```
 
@@ -142,7 +147,11 @@ Now, run the migration from the terminal with `rake db:migrate`.
 
 ```bash
 rake db:migrate
+```
 
+You should see the following output:
+
+```bash
 == 20150914201353 CreateDogs: migrating =======================================
 -- create_table(:dogs)
    -> 0.0019s
