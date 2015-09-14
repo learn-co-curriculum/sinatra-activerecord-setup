@@ -1,12 +1,5 @@
 # Sinatra Activerecord Setup
 
-## TEACHER OUTLINE
-This walkthrough should get students through the mechanics of adding activerecord to a sinatra application. Should mention that this generally isn't necessary as they'll usually start from a template with all of this set up, but it's god to understand the pieces.
-
-should cover:
-- activerecord gem
-- creating rakefile with activerecord rake tasks
-- configuring the database in environment.rb file
 
 ## Objectives
 
@@ -83,4 +76,30 @@ rake db:structure:dump      # Dump the database structure to db/structure.sql
 rake db:structure:load      # Recreate the databases from the structure.sql file
 rake db:version             # Retrieves the current schema version number
 ```
+Awesome!
 
+### Conecting to the Database
+
+We now have access to all of the gems that we need, but we still need to setup a connection to our database. Add the following block of code to your `environment.rb` file. 
+
+```ruby
+configure :development do
+  set :database, "sqlite3:db/database.db"
+end
+```
+
+This sets up a connection to a sqlite3 database named "database.db", located in a folder called "db." If we wanted our `.db` file to be called `dogs.db`, we could simply change the name of this file:
+
+```ruby
+configure :development do
+  set :database, "sqlite3:db/dog.db"
+end
+```
+
+But for now, `database.db` is a sensible name!
+
+### Testing it Out
+
+Let's test out our handywork by creating a `dogs` table with two columns: `name` and `breed`. First, let's create out migration:
+
+`ra
