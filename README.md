@@ -111,6 +111,7 @@ You should see the following output:
 ```bash
 =># db/migrate/20150914201353_create_dogs.rb
 ```
+The beginning of the file is a timestamp - yours should refelct the time that your `create_dogs` file was created!
 
 Inside of our migration file, add methods for `up` and `down`
 
