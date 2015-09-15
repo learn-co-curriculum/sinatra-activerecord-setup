@@ -1,17 +1,18 @@
 # A sample Gemfile
 source "https://rubygems.org"
 
-# gem "rails"
-
 gem 'sinatra'
-    gem 'rake'
-    gem 'thin'
-    gem 'shotgun'
-    gem 'pry'
-    gem 'require_all'
+gem 'thin'
+gem 'require_all'
+
+
+group :development do
+	gem 'shotgun'
+	gem 'pry'
+end
     
 group :test do
-      gem 'rspec'
-      gem 'capybara'
-      gem 'rack-test'
-    end
+  gem 'rspec'
+  gem 'capybara'
+  gem 'rack-test'
+end
