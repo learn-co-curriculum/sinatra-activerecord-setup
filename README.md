@@ -47,7 +47,7 @@ Into our development group, we'll add two other gems: `sqlite3` and `tux`. `sqli
 
 Our Gemfile is up to date - awesome! Go ahead and run `bundle install` to get your system up to speed.
 
-### Conecting to the Database
+### Connecting to the Database
 
 We now have access to all of the gems that we need, but we still need to setup a connection to our database. Add the following block of code to your `environment.rb` file. 
 
@@ -101,7 +101,7 @@ Awesome!
 
 ### Testing it Out
 
-Let's test out our handywork by creating a `dogs` table with two columns: `name` and `breed`. First, let's create out migration:
+Let's test out our handiwork by creating a `dogs` table with two columns: `name` and `breed`. First, let's create our migration:
 
 ```bash
 rake db:create_migration NAME=create_dogs
@@ -111,17 +111,16 @@ You should see the following output:
 ```bash
 =># db/migrate/20150914201353_create_dogs.rb
 ```
+The beginning of the file is a timestamp - yours should refelct the time that your `create_dogs` file was created!
 
 Inside of our migration file, add methods for `up` and `down`
 
 ```ruby
 class CreateDogs < ActiveRecord::Migration
   def up
-  
   end
 
   def down
-  	
   end
 end
 ```
