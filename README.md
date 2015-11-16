@@ -69,7 +69,7 @@ But for now, `database.db` is a great name! Notice that this didn't actually cre
 
 ### Making a Rakefile
 
-As we mentioned, `rake` gives us the ability to quickly make files and setup automated tasks. We define these in a file called `Rakefile`. First, create a `Rakefile` in the root of our project directory. In your `Rakefile`, we'll require our `config/environment.rb` file to load up our environment, as well as `"sinatra/activerecord/rake"` to get Rake tasks from the `sinatra-activerecord` gem.
+As we mentioned, `rake` gives us the ability to quickly make files and setup automated tasks. We define these in a file called `Rakefile`. First, create a `Rakefile` in the root of our project directory (if you're using Nitrous, you'll need to refresh the file navigation tree to see the file). In your `Rakefile`, we'll require our `config/environment.rb` file to load up our environment, as well as `"sinatra/activerecord/rake"` to get Rake tasks from the `sinatra-activerecord` gem.
 
 ```ruby
 require'./config/environment'
@@ -111,7 +111,7 @@ You should see the following output:
 ```bash
 =># db/migrate/20150914201353_create_dogs.rb
 ```
-The beginning of the file is a timestamp - yours should refelct the time that your `create_dogs` file was created!
+ The beginning of the file is a timestamp - yours should refelct the time that your `create_dogs` file was created! You've now created your first database migration inside of the `db` folder (Remember to refresh your file tree if you're using Nitrous)
 
 Inside of our migration file, add methods for `up` and `down`
 
