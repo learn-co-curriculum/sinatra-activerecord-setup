@@ -49,7 +49,7 @@ Our Gemfile is up to date - awesome! Go ahead and run `bundle install` to get yo
 
 ### Connecting to the Database
 
-We now have access to all of the gems that we need, but we still need to setup a connection to our database. Add the following block of code to your `environment.rb` file. 
+We now have access to all of the gems that we need, but we still need to setup a connection to our database. Add the following block of code to your `environment.rb` file (underneath `Bundler.require(:default, ENV['SINATRA_ENV'])`). 
 
 ```ruby
 configure :development do
