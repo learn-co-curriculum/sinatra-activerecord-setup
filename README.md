@@ -111,7 +111,7 @@ You should see the following output:
 ```bash
 =># db/migrate/20150914201353_create_dogs.rb
 ```
- The beginning of the file is a timestamp - yours should refelct the time that your `create_dogs` file was created! You've now created your first database migration inside of the `db` folder (Remember to refresh your file tree if you're using Nitrous)
+ The beginning of the file is a timestamp - yours should reflect the time that your `create_dogs` file was created! You've now created your first database migration inside of the `db` folder (Remember to refresh your file tree if you're using Nitrous)
 
 Inside of our migration file, remove the default `change` method (we'll come back to this), and add methods for `up` and `down`
 
