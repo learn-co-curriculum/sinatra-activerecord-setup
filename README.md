@@ -49,7 +49,7 @@ Our Gemfile is up to date - awesome! Go ahead and run `bundle install` to get yo
 
 ### Connecting to the Database
 
-We now have access to all of the gems that we need, but we still need to setup a connection to our database. Add the following block of code to your `environment.rb` file. 
+We now have access to all of the gems that we need, but we still need to setup a connection to our database. Add the following block of code to your `environment.rb` file (underneath `Bundler.require(:default, ENV['SINATRA_ENV'])`). 
 
 ```ruby
 configure :development do
@@ -61,7 +61,7 @@ This sets up a connection to a sqlite3 database named "database.db", located in 
 
 ```ruby
 configure :development do
-  set :database, "sqlite3:db/dog.db"
+  set :database, "sqlite3:db/dogs.db"
 end
 ```
 
@@ -69,7 +69,7 @@ But for now, `database.db` is a great name! Notice that this didn't actually cre
 
 ### Making a Rakefile
 
-As we mentioned, `rake` gives us the ability to quickly make files and setup automated tasks. We define these in a file called `Rakefile`. First, create a `Rakefile` in the root of our project directory. In your `Rakefile`, we'll require our `config/environment.rb` file to load up our environment, as well as `"sinatra/activerecord/rake"` to get Rake tasks from the `sinatra-activerecord` gem.
+As we mentioned, `rake` gives us the ability to quickly make files and setup automated tasks. We define these in a file called `Rakefile`. First, create a `Rakefile` in the root of our project directory (if you're using Nitrous, you'll need to refresh the file navigation tree to see the file). In your `Rakefile`, we'll require our `config/environment.rb` file to load up our environment, as well as `"sinatra/activerecord/rake"` to get Rake tasks from the `sinatra-activerecord` gem.
 
 ```ruby
 require'./config/environment'
@@ -111,9 +111,13 @@ You should see the following output:
 ```bash
 =># db/migrate/20150914201353_create_dogs.rb
 ```
+<<<<<<< HEAD
 The beginning of the file is a timestamp - yours should refelct the time that your `create_dogs` file was created!
+=======
+ The beginning of the file is a timestamp - yours should reflect the time that your `create_dogs` file was created! You've now created your first database migration inside of the `db` folder (Remember to refresh your file tree if you're using Nitrous)
+>>>>>>> master
 
-Inside of our migration file, add methods for `up` and `down`
+Inside of our migration file, remove the default `change` method (we'll come back to this), and add methods for `up` and `down`
 
 ```ruby
 class CreateDogs < ActiveRecord::Migration
@@ -157,4 +161,23 @@ You should see the following output:
 == 20150914201353 CreateDogs: migrated (0.0020s) ==============================
 ```
 
+#### The `change` Method
+The change method is actually a shorter way of writing `up` and `down` methods. We can refactor our migration to look like this:
+
+```
+class CreateDogs < ActiveRecord::Migration
+  def change
+    create_table :dogs do |t|
+      t.string :name
+      t.string :breed
+    end
+  end
+
+end
+```
+While the rollback (`down`) method is not included, it's implicit in the change method. Rolling back the database would work in exactly the same way as using the `down` method.
+
 Awesome job!!
+
+<a href='https://learn.co/lessons/sinatra-activerecord-setup' data-visibility='hidden'>View this lesson on Learn.co</a>
+
