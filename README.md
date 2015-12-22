@@ -61,7 +61,7 @@ This sets up a connection to a sqlite3 database named "database.db", located in 
 
 ```ruby
 configure :development do
-  set :database, "sqlite3:db/dog.db"
+  set :database, "sqlite3:db/dogs.db"
 end
 ```
 
