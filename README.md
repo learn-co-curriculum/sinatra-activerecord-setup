@@ -175,4 +175,4 @@ While the rollback (`down`) method is not included, it's implicit in the change 
 
 Awesome job!!
 
-<a href='https://learn.co/lessons/sinatra-activerecord-setup' data-visibility='hidden'>View this lesson on Learn.co</a>
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/sinatra-activerecord-setup' title='Sinatra Activerecord Setup'>Sinatra Activerecord Setup</a> on Learn.co and start learning to code for free.</p>
