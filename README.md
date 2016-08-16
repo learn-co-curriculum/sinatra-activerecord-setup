@@ -73,7 +73,7 @@ As we mentioned, `rake` gives us the ability to quickly make files and setup aut
 
 ```ruby
 require './config/environment'
-require'sinatra/activerecord/rake'
+require 'sinatra/activerecord/rake'
 ```
 
 In the terminal, type `rake -T` to view all of the available rake tasks. You should see the following output:
