@@ -4,12 +4,12 @@
 ## Objectives
 
 1. Setup a database in a Sinatra application.
-2. Create and use a Rakefile to run ActiveRecord migrations
+2. Create and use a Rakefile to run ActiveRecord migrations.
 3. Use ActiveRecord in a Sinatra application.
 
 ## Overview
 
-Sinatra doesn't come with database support out of the box, but it's relatively easy to configure. In general, we'll be working from templates that have this pre-built, but it's good to understand what's going on under the hood. We're going to practice adding a database into our Sinatra applications.
+Sinatra doesn't come with database support out of the box, but it's relatively easy to configure. In general, we'll be working from templates that have this pre-built, but it's good to understand what's going on under the hood. We're going to practice adding a database to our Sinatra applications.
 
 ## Instructions
 
@@ -53,7 +53,7 @@ We now have access to all of the gems that we need, but we still need to setup a
 
 ```ruby
 configure :development do
-  set :database, "sqlite3:db/database.db"
+  set :database, 'sqlite3:db/database.db'
 end
 ```
 
@@ -61,22 +61,22 @@ This sets up a connection to a sqlite3 database named "database.db", located in 
 
 ```ruby
 configure :development do
-  set :database, "sqlite3:db/dogs.db"
+  set :database, 'sqlite3:db/dogs.db'
 end
 ```
 
-But for now, `database.db` is a great name! Notice that this didn't actually create those files or folders yet - that's what Rake will help us with!
+But for now, `database.db` is a great name. Notice that this didn't actually create those files or folders yet - that's how Rake will help us.
 
 ### Making a Rakefile
 
-As we mentioned, `rake` gives us the ability to quickly make files and setup automated tasks. We define these in a file called `Rakefile`. First, create a `Rakefile` in the root of our project directory (if you're using Nitrous, you'll need to refresh the file navigation tree to see the file). In your `Rakefile`, we'll require our `config/environment.rb` file to load up our environment, as well as `"sinatra/activerecord/rake"` to get Rake tasks from the `sinatra-activerecord` gem.
+As we mentioned, `rake` gives us the ability to quickly make files and setup automated tasks. We define these in a file called `Rakefile`. First, create a `Rakefile` in the root of our project directory. In the `Rakefile`, we'll require our `config/environment.rb` file to load up our environment, as well as `"sinatra/activerecord/rake"` to get Rake tasks from the `sinatra-activerecord` gem.
 
 ```ruby
-require'./config/environment'
-require "sinatra/activerecord/rake"
+require './config/environment'
+require 'sinatra/activerecord/rake'
 ```
 
-In the terminal, type `rake -T` to view all of your available rake tasks. You should see the following output:
+In the terminal, type `rake -T` to view all of the available rake tasks. You should see the following output:
 
 ```bash
 rake db:create              # Creates the database from DATABASE_URL or config/database.yml for...
@@ -96,8 +96,6 @@ rake db:structure:dump      # Dump the database structure to db/structure.sql
 rake db:structure:load      # Recreate the databases from the structure.sql file
 rake db:version             # Retrieves the current schema version number
 ```
-Awesome!
-
 
 ### Testing it Out
 
@@ -111,9 +109,9 @@ You should see the following output:
 ```bash
 =># db/migrate/20150914201353_create_dogs.rb
 ```
- The beginning of the file is a timestamp - yours should reflect the time that your `create_dogs` file was created! You've now created your first database migration inside of the `db` folder (Remember to refresh your file tree if you're using Nitrous)
+ The beginning of the file is a timestamp - yours should reflect the time that your `create_dogs` file was created! You've now created your first database migration inside of the `db` folder.
 
-Inside of our migration file, remove the default `change` method (we'll come back to this), and add methods for `up` and `down`
+Inside of the migration file, remove the default `change` method (we'll come back to this), and add methods for `up` and `down`.
 
 ```ruby
 class CreateDogs < ActiveRecord::Migration
@@ -172,7 +170,5 @@ class CreateDogs < ActiveRecord::Migration
 end
 ```
 While the rollback (`down`) method is not included, it's implicit in the change method. Rolling back the database would work in exactly the same way as using the `down` method.
-
-Awesome job!!
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/sinatra-activerecord-setup' title='Sinatra Activerecord Setup'>Sinatra Activerecord Setup</a> on Learn.co and start learning to code for free.</p>
