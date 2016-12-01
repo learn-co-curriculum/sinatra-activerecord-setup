@@ -17,7 +17,7 @@ Fork and clone this repository to get started! We have a basic sinatra applicati
 
 ### Adding Your Gems
 
-First, we'll add three gems to allow us to use ActiveRecord: `activerecord` version `4.2.5`, `sinatra-activerecord`, and `rake`. `activerecord` gives us access to the magical database mapping and association powers. `rake`, short for "ruby make", is a package that lets us quickly create files, folders, and automate tasks such as database creation, and `sinatra-activerecord` gives us access to some awesome Rake tasks. Make sure those three gems are in your Gemfile:
+First, we'll add three gems to allow us to use ActiveRecord: `activerecord` version `4.2.5`, `sinatra-activerecord`, and `rake`. `activerecord` gives us access to the magical database mapping and association powers. `rake`, short for "ruby make", is a package that lets us quickly create files and folders and automate tasks such as database creation, and `sinatra-activerecord` gives us access to some awesome Rake tasks. Make sure those three gems are in your Gemfile:
 
 ```ruby
  	gem 'sinatra'
@@ -172,3 +172,5 @@ end
 While the rollback (`down`) method is not included, it's implicit in the change method. Rolling back the database would work in exactly the same way as using the `down` method.
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/sinatra-activerecord-setup' title='Sinatra Activerecord Setup'>Sinatra Activerecord Setup</a> on Learn.co and start learning to code for free.</p>
+
+<p class='util--hide'>View <a href='https://learn.co/lessons/sinatra-activerecord-setup'>ActiveRecord Setup in Sinatra</a> on Learn.co and start learning to code for free.</p>
