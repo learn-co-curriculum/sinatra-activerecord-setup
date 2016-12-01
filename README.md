@@ -49,7 +49,7 @@ Our Gemfile is up to date - awesome! Go ahead and run `bundle install` to get yo
 
 ### Connecting to the Database
 
-We now have access to all of the gems that we need, but we still need to setup a connection to our database. Add the following block of code to your `environment.rb` file (underneath `Bundler.require(:default, ENV['SINATRA_ENV'])`).
+We now have access to all of the gems that we need, but we still need to set up a connection to our database. Add the following block of code to your `environment.rb` file (underneath `Bundler.require(:default, ENV['SINATRA_ENV'])`).
 
 ```ruby
 configure :development do
@@ -69,7 +69,7 @@ But for now, `database.db` is a great name. Notice that this didn't actually cre
 
 ### Making a Rakefile
 
-As we mentioned, `rake` gives us the ability to quickly make files and setup automated tasks. We define these in a file called `Rakefile`. First, create a `Rakefile` in the root of our project directory. In the `Rakefile`, we'll require our `config/environment.rb` file to load up our environment, as well as `"sinatra/activerecord/rake"` to get Rake tasks from the `sinatra-activerecord` gem.
+As we mentioned, `rake` gives us the ability to quickly make files and set up automated tasks. We define these in a file called `Rakefile`. First, create a `Rakefile` in the root of our project directory. In the `Rakefile`, we'll require our `config/environment.rb` file to load up our environment, as well as `"sinatra/activerecord/rake"` to get Rake tasks from the `sinatra-activerecord` gem.
 
 ```ruby
 require './config/environment'
@@ -172,3 +172,5 @@ end
 While the rollback (`down`) method is not included, it's implicit in the change method. Rolling back the database would work in exactly the same way as using the `down` method.
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/sinatra-activerecord-setup' title='Sinatra Activerecord Setup'>Sinatra Activerecord Setup</a> on Learn.co and start learning to code for free.</p>
+
+<p class='util--hide'>View <a href='https://learn.co/lessons/sinatra-activerecord-setup'>ActiveRecord Setup in Sinatra</a> on Learn.co and start learning to code for free.</p>
