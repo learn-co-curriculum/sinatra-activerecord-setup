@@ -17,7 +17,7 @@ Fork and clone this repository to get started! We have a basic sinatra applicati
 
 ### Adding Your Gems
 
-First, we'll add three gems to allow us to use ActiveRecord: `activerecord` version `4.2.5`, `sinatra-activerecord`, and `rake`. `activerecord` gives us access to the magical database mapping and association powers. `rake`, short for "ruby make", is a package that lets us quickly create files, folders, and automate tasks such as database creation, and `sinatra-activerecord` gives us access to some awesome Rake tasks. Make sure those three gems are in your Gemfile:
+First, we'll add three gems to allow us to use ActiveRecord: `activerecord` version `4.2.5`, `sinatra-activerecord`, and `rake`. `activerecord` gives us access to the magical database mapping and association powers. `rake`, short for "ruby make", is a package that lets us quickly create files and folders, and automate tasks such as database creation, and `sinatra-activerecord` gives us access to some awesome Rake tasks. Make sure those three gems are in your Gemfile:
 
 ```ruby
  	gem 'sinatra'
