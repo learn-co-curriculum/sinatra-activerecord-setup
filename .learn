@@ -5,3 +5,5 @@ tags:
   - sqlite3
 languages:
   - ruby
+resources:
+  - 0
