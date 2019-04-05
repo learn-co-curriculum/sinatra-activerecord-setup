@@ -20,29 +20,29 @@ Fork and clone this repository to get started! We have a basic sinatra applicati
 First, we'll add three gems to allow us to use ActiveRecord: `activerecord` version `4.2.5`, `sinatra-activerecord`, and `rake`. `activerecord` gives us access to the magical database mapping and association powers. `rake`, short for "ruby make", is a package that lets us quickly create files and folders, and automate tasks such as database creation, and `sinatra-activerecord` gives us access to some awesome Rake tasks. Make sure those three gems are in your Gemfile:
 
 ```ruby
- 	gem 'sinatra'
-	gem 'activerecord', '4.2.5'
-	gem 'sinatra-activerecord'
-	gem 'rake'
-	gem 'thin'
-	gem 'require_all'
+  gem 'sinatra'
+  gem 'activerecord', '4.2.5'
+  gem 'sinatra-activerecord'
+  gem 'rake'
+  gem 'thin'
+  gem 'require_all'
 ```
 
 Into our development group, we'll add two other gems: `sqlite3` and `tux`. `sqlite3` is our database adapter gem - it's what allows our Ruby application to communicate with a SQL database. `tux` will give us an interactive console that pre-loads our database and ActiveRecord relationships for us. Since we won't use either of these in production, we put them in our `:development` group - this way, they won't get installed on our server when we deploy our application.
 
 ```ruby
- 	gem 'sinatra'
-	gem 'activerecord', '4.2.5'
-	gem 'sinatra-activerecord'
-	gem 'thin'
-	gem 'require_all'
+  gem 'sinatra'
+  gem 'activerecord', '4.2.5'
+  gem 'sinatra-activerecord'
+  gem 'thin'
+  gem 'require_all'
 
-	group :development do
-		gem 'shotgun'
-		gem 'pry'
-		gem 'tux'
-		gem 'sqlite3'
-	end
+  group :development do
+    gem 'shotgun'
+    gem 'pry'
+    gem 'tux'
+    gem 'sqlite3'
+  end
 ```
 
 Our Gemfile is up to date - awesome! Go ahead and run `bundle install` to get your system up to speed.
@@ -135,7 +135,7 @@ class CreateDogs < ActiveRecord::Migration
   end
 
   def down
-  	drop_table :dogs
+    drop_table :dogs
   end
 end
 ```
@@ -146,7 +146,7 @@ Now, run the migration from the terminal with `rake db:migrate`.
 rake db:migrate SINATRA_ENV=development
 ```
 
-Why add `SINATRA_ENV=development`, you might ask? Well, remember the top line of `config/environment.rb`? It's telling Sinatra that it should use the "development" environment for both `shotgun` and the testing suite. Therefore, we want to make sure our migrations run on the same environment as well, and specifying `SINATRA_ENV=development` allows us to do that. 
+Why add `SINATRA_ENV=development`, you might ask? Well, remember the top line of `config/environment.rb`? It's telling Sinatra that it should use the "development" environment for both `shotgun` and the testing suite. Therefore, we want to make sure our migrations run on the same environment as well, and specifying `SINATRA_ENV=development` allows us to do that.
 
 You should see the following output:
 
