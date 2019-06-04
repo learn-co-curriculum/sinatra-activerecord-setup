@@ -41,7 +41,7 @@ Into our development group, we'll add two other gems: `sqlite3` and `tux`. `sqli
     gem 'shotgun'
     gem 'pry'
     gem 'tux'
-    gem 'sqlite3'
+    gem 'sqlite3', '~> 1.3.6'
   end
 ```
 
