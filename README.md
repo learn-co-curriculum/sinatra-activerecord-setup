@@ -60,6 +60,8 @@ way, they won't get installed on our server when we deploy our application.
 
 ```ruby
   gem 'sinatra'
+  gem 'thin'
+  gem 'require_all'
   gem 'activerecord', '5.2'
   gem 'sinatra-activerecord'
   gem 'rake'
