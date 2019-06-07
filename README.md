@@ -2,9 +2,9 @@
 
 ## Objectives
 
-1. Setup a database in a Sinatra application.
-2. Create and use a Rakefile to run ActiveRecord migrations.
-3. Use ActiveRecord in a Sinatra application.
+- Setup a database in a Sinatra application.
+- Create and use a Rakefile to run ActiveRecord migrations.
+- Use ActiveRecord in a Sinatra application.
 
 ## Overview
 
@@ -20,21 +20,35 @@ application stubbed out with an `app.rb` file acting as the controller.
 
 ### Adding Your Gems
 
-First, we'll add three gems to allow us to use ActiveRecord: `activerecord`
-version `4.2.5`, `sinatra-activerecord`, and `rake`. `activerecord` gives us
-access to the magical database mapping and association powers. `rake`, short for
-"ruby make", is a package that lets us quickly create files and folders, and
-automate tasks such as database creation, and `sinatra-activerecord` gives us
-access to some awesome Rake tasks. Make sure those three gems are in your
-Gemfile:
+Currently, a few gems are already present in our Gemfile:
+
+```ruby
+gem 'sinatra'
+gem 'thin'
+gem 'require_all'
+
+
+group :development do
+	gem 'shotgun'
+	gem 'pry'
+end
+```
+
+To get Sinatra working with ActiveRecord, First, we'll add three gems to allow
+us to _use_ ActiveRecord: `activerecord` version `5.2`, `sinatra-activerecord`,
+and `rake`. The `activerecord` gem gives us access to the magical database
+mapping and association powers. The `rake` gem, short for "ruby make", is a
+package that lets us quickly create files and folders, and automate tasks such
+as database creation, and the `sinatra-activerecord` gem gives us access to some
+awesome Rake tasks. Make sure those three gems are added in your Gemfile:
 
 ```ruby
   gem 'sinatra'
-  gem 'activerecord', '4.2.5'
-  gem 'sinatra-activerecord'
-  gem 'rake'
   gem 'thin'
   gem 'require_all'
+  gem 'activerecord', '5.2'
+  gem 'sinatra-activerecord'
+  gem 'rake'
 ```
 
 Into our development group, we'll add two other gems: `sqlite3` and `tux`.
@@ -46,10 +60,9 @@ way, they won't get installed on our server when we deploy our application.
 
 ```ruby
   gem 'sinatra'
-  gem 'activerecord', '4.2.5'
+  gem 'activerecord', '5.2'
   gem 'sinatra-activerecord'
-  gem 'thin'
-  gem 'require_all'
+  gem 'rake'
 
   group :development do
     gem 'shotgun'
@@ -147,7 +160,7 @@ Inside of the migration file, remove the default `change` method (we'll come
 back to this), and add methods for `up` and `down`.
 
 ```ruby
-class CreateDogs < ActiveRecord::Migration
+class CreateDogs < ActiveRecord::Migration[5.2]
   def up
   end
 
@@ -156,11 +169,17 @@ class CreateDogs < ActiveRecord::Migration
 end
 ```
 
+**Important:** When we create migrations with ActiveRecord, we must specify the
+version we're using just after `ActiveRecord::Migration`. In this case, we're
+using `5.2`, so all the examples here will show `ActiveRecord::Migration[5.2]`.
+This version may differ depending on the lab. If this number does not match
+the version in your `Gemfile.lock`, your migration will cause an error.
+
 Our `up` method should create our table with `name` and `breed` columns. Our
 down method should drop the table.
 
 ```ruby
-class CreateDogs < ActiveRecord::Migration
+class CreateDogs < ActiveRecord::Migration[5.2]
   def up
     create_table :dogs do |t|
       t.string :name
@@ -196,10 +215,12 @@ You should see the following output:
 ```
 
 #### The `change` Method
-The change method is actually a shorter way of writing `up` and `down` methods. We can refactor our migration to look like this:
+
+The change method is actually a shorter way of writing `up` and `down` methods.
+We can refactor our migration to look like this:
 
 ```rb
-class CreateDogs < ActiveRecord::Migration
+class CreateDogs < ActiveRecord::Migration[5.2]
   def change
     create_table :dogs do |t|
       t.string :name
